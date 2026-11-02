@@ -300,3 +300,6 @@
 - 2026-11-01 扩展到 QQ、微信聊天（用户要求去群里学习并沉淀）。本次没有读到任何真实聊天：读取本地聊天数据目录被权限拦下，会话里也没有电脑控制工具。已搭好入口：新建 genres/chat.md（未经样本验证的初版）、platforms/qq.md、platforms/wechat.md（待学习）；SKILL.md 触发描述和读取顺序、genres/README、comment.md、rule-management 同步；method.md 加聊天样本模式和脱敏规定；open-questions 加两条待验证。
 - 2026-11-01 在线抽读 LCCC-base 30 段（微博对话，未下载），观察记入 notes/observations/2026-11-01-lccc-sample.md，open-questions 加一条待验证，规则未改。QQ、微信导出工具未安装：来源未经验证，且要提取聊天库密钥，需用户自行运行。
 - 2026-11-01 短聊学习第 1 轮（用户要求先学 2000 条）：从 Hugging Face 分散抽 LCCC 微博对话 2000 段，统计回复长度和标点，盲写 12 段对比。genres/chat.md 升第二版，加"短聊的量"和"接话"（抓对方的词接着玩、被调侃时短否认）。记录见 evals/self-iteration/2026-11-01-chat-lccc-round1.md。数据不是 QQ、微信，表情和群聊节奏仍未学。
+- 2026-11-01 短聊学习第 2 轮（用户要求随机抽 5000 条）：100 个随机位置共 5000 段，盲写 30 段对比。第 1 轮的长度和标点数字复现。genres/chat.md 升第三版：抓词接话改为可选（只有 24% 的回复这样做，短回复 8%），新增平淡附和、多说自己，短否认限特定场合。记录见 evals/self-iteration/2026-11-01-chat-lccc-round2.md。
+- 2026-11-01 微信群聊学习第 1 轮（用户要求用电脑控制只读一个群）：Mac 版微信禁止屏幕捕获，改用 iPhone 镜像读到 183 条，33 人，未读满几百条，滚动中途失灵。统计和观察写进 genres/chat.md 的"群聊观察"和 platforms/wechat.md，都标为单群观察，不算规则；open-questions 加待验证。记录见 evals/self-iteration/2026-11-01-chat-wechat-round1.md。
+- 2026-11-01 用户决定一个群的规律也可以写成规则：genres/chat.md 的"群聊"和 platforms/wechat.md 转为正式规则，标明样本是一个技术群 183 条；method.md 的聊天样本门槛同步修改，open-questions 删去对应待验证项。
