@@ -305,3 +305,4 @@
 - 2026-11-01 用户决定一个群的规律也可以写成规则：genres/chat.md 的"群聊"和 platforms/wechat.md 转为正式规则，标明样本是一个技术群 183 条；method.md 的聊天样本门槛同步修改，open-questions 删去对应待验证项。
 - 2026-11-02 微信群聊学习第 2 轮（用户要求验证 Windows 微信并读到几百条）：Windows 版能截图、能往上翻，读到第 1 轮同一个群 365 条，65 人，带 6 处盲写，没有发消息。genres/chat.md 升第四版：群聊数字并成两轮的范围，新增"先报自己的情况"，"谁接谁""不接也正常""间隔""表情"补新观察；platforms/wechat.md 补系统消息和时间分隔；open-questions 加一条等用户决定。记录见 evals/self-iteration/2026-11-02-chat-wechat-round2.md。
 - 2026-11-02 微信第 2 轮补记：用户确认后发了 1 条短追问到学习的群，发前重看、发后核对。
+- 2026-11-02 QQ 群聊学习第 1 轮（用户要求导出后直接学习）：用 QCE 导出一个账号买卖群 435 条，去掉机器人和广告后 376 条，随机 10 处盲写，没有发消息。platforms/qq.md 写成第一版；genres/chat.md 的"先报自己的情况""不接也正常""间隔"加了 QQ 证据，并提醒替用户写时不能编经历。记录见 evals/self-iteration/2026-11-02-chat-qq-round1.md。
