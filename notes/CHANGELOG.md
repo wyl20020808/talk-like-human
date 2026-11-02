@@ -303,3 +303,5 @@
 - 2026-11-01 短聊学习第 2 轮（用户要求随机抽 5000 条）：100 个随机位置共 5000 段，盲写 30 段对比。第 1 轮的长度和标点数字复现。genres/chat.md 升第三版：抓词接话改为可选（只有 24% 的回复这样做，短回复 8%），新增平淡附和、多说自己，短否认限特定场合。记录见 evals/self-iteration/2026-11-01-chat-lccc-round2.md。
 - 2026-11-01 微信群聊学习第 1 轮（用户要求用电脑控制只读一个群）：Mac 版微信禁止屏幕捕获，改用 iPhone 镜像读到 183 条，33 人，未读满几百条，滚动中途失灵。统计和观察写进 genres/chat.md 的"群聊观察"和 platforms/wechat.md，都标为单群观察，不算规则；open-questions 加待验证。记录见 evals/self-iteration/2026-11-01-chat-wechat-round1.md。
 - 2026-11-01 用户决定一个群的规律也可以写成规则：genres/chat.md 的"群聊"和 platforms/wechat.md 转为正式规则，标明样本是一个技术群 183 条；method.md 的聊天样本门槛同步修改，open-questions 删去对应待验证项。
+- 2026-11-02 微信群聊学习第 2 轮（用户要求验证 Windows 微信并读到几百条）：Windows 版能截图、能往上翻，读到第 1 轮同一个群 365 条，65 人，带 6 处盲写，没有发消息。genres/chat.md 升第四版：群聊数字并成两轮的范围，新增"先报自己的情况"，"谁接谁""不接也正常""间隔""表情"补新观察；platforms/wechat.md 补系统消息和时间分隔；open-questions 加一条等用户决定。记录见 evals/self-iteration/2026-11-02-chat-wechat-round2.md。
+- 2026-11-02 微信第 2 轮补记：用户确认后发了 1 条短追问到学习的群，发前重看、发后核对。
