@@ -26,5 +26,47 @@ async function question(id) {
   return { title: q.title, detail: toText(q.detail || ''), answerCount: q.answerCount, followers: q.followerCount, visits: q.visitCount, answers };
 }
 
+// 评论：回答下按热度的一层评论 + 每条的前 20 条楼中楼。只读，表情图转成 [文字]。
+// 请求要慢（每次间隔 1 秒以上）。连发几十个会被 403 或 10003（请求参数异常）；
+// 这时停下，在面板里打开任意一个回答页、点开评论，再接着采就恢复了（2026-11-03）。
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const clean = h => (h || '').replace(/<img[^>]*alt="([^"]*)"[^>]*>/g, '$1').replace(/<a [^>]*>([\s\S]*?)<\/a>/g, '$1')
+  .replace(/<br\/?>/g, '\n').replace(/<\/p><p>/g, '\n').replace(/<[^>]+>/g, '').replace(/&#34;|&quot;/g, '"')
+  .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').trim();
+async function getJSON(u) {
+  await sleep(900 + Math.random() * 700);
+  const r = await fetch(u, { credentials: 'include' });
+  if (r.status !== 200) throw new Error('HTTP ' + r.status + ' ' + u);
+  return r.json();
+}
+// 返回 [{lvl:1|2, root, t, like, kids, author}]，不存用户名。
+// 答主标记在 author_tag（type=content_author），is_author 字段对楼中楼总是 false（2026-11-03 轮 24）。
+const isAuthor = c => (c.author_tag || []).some(t => t.type === 'content_author');
+async function comments(answerId, pages = 1) {
+  const out = [];
+  let url = `/api/v4/comment_v5/answers/${answerId}/root_comment?order_by=score&limit=20&offset=`;
+  for (let i = 0; i < pages && url; i++) {
+    const r = await getJSON(url);
+    for (const c of r.data || []) {
+      out.push({ lvl: 1, root: c.id, t: clean(c.content), like: c.like_count, kids: c.child_comment_count, author: isAuthor(c) });
+      if (!c.child_comment_count) continue;
+      const k = await getJSON(`/api/v4/comment_v5/comment/${c.id}/child_comment?order_by=score&limit=20&offset=`);
+      for (const x of k.data || []) out.push({ lvl: 2, root: c.id, t: clean(x.content), like: x.like_count, author: isAuthor(x) });
+    }
+    url = r.paging?.is_end ? null : (r.paging?.next || '').replace('https://www.zhihu.com', '');
+  }
+  return out;
+}
+
+// 搜索：返回问题、文章的标题和赞数。vertical 传 'article' 只搜文章（2026-11-03 轮 19、25 可用）。
+// 推荐流里的文章几乎全是软广，找文章用这个。
+async function search(q, { vertical = '', offset = 0 } = {}) {
+  const r = await getJSON(`/api/v4/search_v3?gk_version=gz-gaokao&t=general&q=${encodeURIComponent(q)}&correction=1&offset=${offset}&limit=20${vertical ? '&vertical=' + vertical : ''}&lc_idx=0&show_all_topics=0&search_source=Normal`);
+  const strip = h => (h || '').replace(/<[^>]+>/g, '');
+  return (r.data || []).map(x => x.object).filter(o => o && (o.type === 'answer' || o.type === 'article')).map(o => ({
+    type: o.type, id: o.id, title: strip(o.title || o.question?.name), questionId: o.question?.id,
+    votes: o.voteup_count, comments: o.comment_count, created: new Date((o.created_time || o.created) * 1000).toISOString().slice(0, 10) }));
+}
+
 // 选题时先只看题面：question(id) 后只读 title/detail，盲写完再读 answers。
-window.ZR = { hot, question };
+window.ZR = { hot, question, comments, search };
