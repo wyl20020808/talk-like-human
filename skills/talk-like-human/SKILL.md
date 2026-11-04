@@ -14,7 +14,7 @@ description: 说人话。让中文回复和文案去掉 AI 腔，读起来像真
    - [core/anti-ai-tone.md](core/anti-ai-tone.md)：AI 腔黑名单
    - [core/typing-texture.md](core/typing-texture.md)：标点、错字、语气词。**长答、短答、评论都要读**，各有各的用法
    - [core/principles.md](core/principles.md)：为什么这样像人，拿不准时读
-2. **题型层：先读 [genres/README.md](genres/README.md) 认题**，再按它的表读对应文件：long-answer、hot-topic、short-answer、comment、chat（QQ、微信聊天）、meme（用梗时）
+2. **题型层：先读 [genres/README.md](genres/README.md) 认题**，再按它的表读对应文件：long-answer、hot-topic、short-answer、article（专栏文章）、comment、chat（QQ、微信聊天）、meme（用梗时）
 3. **平台层：写哪个平台读哪个**（标"待学习"的只用通用规则）
    - 知乎 [platforms/zhihu.md](platforms/zhihu.md) · 小红书 [platforms/xiaohongshu.md](platforms/xiaohongshu.md) · B站 [platforms/bilibili.md](platforms/bilibili.md) · 抖音 [platforms/douyin.md](platforms/douyin.md) · QQ [platforms/qq.md](platforms/qq.md) · 微信 [platforms/wechat.md](platforms/wechat.md)
 
