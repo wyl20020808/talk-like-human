@@ -11,7 +11,7 @@ description: 说人话项目的训练流程。用户说"继续学习""训练""�
 
 完整步骤见 [method.md](method.md)。最近几轮固定下来的顺序：
 
-1. **选题**：用 [scripts/zhihu-read.js](scripts/zhihu-read.js) 在浏览器面板（已登录知乎）拉热榜。按"热度 × 回答数"挑，近期热榜和历史高热（几百万浏览的老题）都要有；跳过敏感时政、要亲身经历才能答的题、绕过平台限制类的题。历史高赞题从推荐流（`/api/v3/feed/topstory/recommend`）里挑赞数几千以上的回答；专栏文章用 `ZR.search(关键词, {vertical:'article'})`，推荐流里的文章几乎全是软广。评论用 `ZR.comments()`，请求间隔 1 秒以上。
+1. **选题**：用 [scripts/zhihu-read.js](scripts/zhihu-read.js) 在浏览器面板（已登录知乎）拉热榜。按"热度 × 回答数"挑，近期热榜和历史高热（几百万浏览的老题）都要有；跳过敏感时政、要亲身经历才能答的题、绕过平台限制类的题。历史高赞题从推荐流（`/api/v3/feed/topstory/recommend`）里挑赞数几千以上的回答；专栏文章用 `ZR.search(关键词, {vertical:'article'})`，推荐流里的文章几乎全是软广。评论用 `ZR.comments()`，请求间隔 1 秒以上。B 站评论不用登录，用 [scripts/bili-fetch.py](scripts/bili-fetch.py) 拉到 .private/，先只读它产出的 blind.md 盲写，再看 raw.json。
 2. **盲写**：只读题面，按写作 skill 当前版本写完，存档，再看任何回答。守硬规则：不编经历。
 3. **拆前排**：读前 5 篇，记字数、段数、图数、加粗、角度、情绪；没出处的说法单独列。高赞先判断是不是人话，营销腔、AI 腔、鸡汤不学。
 4. **对比**：每个差距分成"我不知道 / 我没想到 / 我没写好"。标点用 [scripts/punct_stats.py](scripts/punct_stats.py) 量，不靠感觉。
